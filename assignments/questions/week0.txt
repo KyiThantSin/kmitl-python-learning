@@ -1,0 +1,13 @@
+1. Write a program that reads the following informa@on and prints a payroll statement.
+Employee’s name (e.g,. Smith )
+Number of hours worked in a week (e.g., 10) Hourly pay rate (e.g., 9.75)
+Federal tax withholding rate(e.g. 20%)
+State tax withholding rate (e.g., 9%)
+
+2. Write a program that prompt the user to enter a four-digit integer and displays the number in reverse order.
+
+3. Write a program that prompts the user to enter the length of the star and draw a star. (Hint: The inner angle of each point of the star is 36 degrees)
+
+4. Write a program that prompts the user to enter the radius of the ring and draws an Olympic symbol of five rings of the same size with the the colors blue, black, red, yellow and green.
+
+5. Write a program that prompts the user to enter the three point p1,p2 and p3 for a triangle and display its area below the triangle.
