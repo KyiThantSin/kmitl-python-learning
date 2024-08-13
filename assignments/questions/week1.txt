@@ -1,0 +1,8 @@
+1. Write a program that prompts the user to eneter the x- and y-coordinate for 
+the three points p0, p1, and p2 and the program to display a message to 
+indicate whether p2 is on the left side of, the right side of, or on the line between p0 and p1.
+
+
+2. Write a program that prompts the user to enter the center x-, y- coordinates, width 
+and height of two rectangles and the program then 
+determines whether which rectangle is inside or overlap with the other.
