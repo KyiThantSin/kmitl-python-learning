@@ -38,7 +38,7 @@ if left1 >= left2 and right1 <= right2 and top1 <= top2 and bottom1 >= bottom2:
 elif left2 >= left1 and right2 <= right1 and top2 <= top1 and bottom2 >= bottom1:
     print("Rectangle 2 is inside Rectangle 1")
 else:
-    print("They are the same size")
+    print("The rectangles do not contain each other")
 
 # Check overlap
 if right1 < left2 or left1 > right2 or top1 < bottom2 or bottom1 > top2:
