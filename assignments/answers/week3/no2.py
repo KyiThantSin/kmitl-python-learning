@@ -1,69 +1,66 @@
 import turtle
 
-days_each_week = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
-days_each_month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-start_day_of_month = [1, 4, 5, 1, 3, 6, 1, 4, 7, 2, 5, 7] 
-box_width = 50
-box_height = 30
-start_x = -150
-start_y = 200
+month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+week_days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
+days_per_month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+start_day_of_month = [1, 4, 5, 1, 3, 6, 1, 4, 0, 2, 5, 0]
 
-def draw_box(t, x, y, width, height):
-    t.penup()
-    t.goto(x, y)
-    t.pendown()
+calendar_size = 250
+cell_width = calendar_size / 7
+cell_height = calendar_size / 10
+
+def box(width, height):
+    turtle.pensize(2)
     for _ in range(2):
-        t.forward(width)
-        t.right(90)
-        t.forward(height)
-        t.right(90)
+        turtle.forward(width)
+        turtle.right(90)
+        turtle.forward(height)
+        turtle.right(90)
 
-def draw_calendar(month):
-    t = turtle.Turtle()
-    t.speed(0)
-    t.hideturtle()
+def draw_calendar():
+    turtle.pensize(2)
+    month = int(input("Please enter month of the year(1-12): "))
+    box(calendar_size, cell_height)
 
-    month_names = ["January", "February", "March", "April", "May", "June", 
-                   "July", "August", "September", "October", "November", "December"]
-    t.penup()
-    t.goto(start_x + box_width * 3.5, start_y + 40)
-    t.write(f"{month_names[month-1]} 2024", align="center", font=("Arial", 16, "bold"))
-    t.goto(start_x, start_y)
-    t.pendown()
+    turtle.penup()
+    x, y = turtle.position()
+    turtle.goto(x + 75, y - 20)
+    turtle.write(f"{month_names[month - 1]} 2024", align="left", font=("Ariel", 14, "normal"))
+    turtle.goto(x, y)
+    turtle.pendown()
+    turtle.right(90)
+    turtle.forward(cell_height)
+    turtle.left(90)
 
-    for i, day in enumerate(days_each_week):
-        draw_box(t, start_x + i * box_width, start_y, box_width, box_height)
-        t.penup()
-        t.goto(start_x + i * box_width + box_width / 2, start_y - box_height / 2 - 10)
-        t.write(day, align="center", font=("Arial", 12, "normal"))
-        t.pendown()
+    day_count = 1 
+    for row in range(7):
+        for col in range(7):
+            box(cell_width, cell_height)
 
-    first_day_of_month = start_day_of_month[month - 1]
-    num_days = days_each_month[month - 1]
-    
-    current_x = start_x + (first_day_of_month - 1) * box_width
-    current_y = start_y - box_height
+            if row == 0:
+                turtle.penup()
+                x, y = turtle.position()
+                turtle.goto(x + 8, y - 20)
+                turtle.write(week_days[col], align="left", font=("Ariel", 14, "normal"))
+                turtle.goto(x, y)
+                turtle.pendown()
 
-    for day in range(1, num_days + 1):
-        draw_box(t, current_x, current_y, box_width, box_height)
-        t.penup()
-        t.goto(current_x + box_width / 2, current_y - box_height / 2 - 10)
-        t.write(day, align="center", font=("Arial", 12, "normal"))
-        t.pendown()
-        
-        current_x += box_width
-        if (first_day_of_month + day - 1) % 7 == 0:
-            current_x = start_x
-            current_y -= box_height
-
-    remaining_days = (7 - (num_days + first_day_of_month - 1) % 7) % 7
-    for _ in range(remaining_days):
-        draw_box(t, current_x, current_y, box_width, box_height)
-        current_x += box_width
-        if current_x > start_x + 6 * box_width:
-            current_x = start_x
-            current_y -= box_height
+            else:
+                if (row >= 2 or col + 1 >= start_day_of_month[month - 1]) and day_count <= days_per_month[month - 1]:
+                    turtle.penup()
+                    x, y = turtle.position()
+                    turtle.goto(x + 25, y - 20)
+                    turtle.write(day_count, align="right", font=("Ariel", 14, "normal"))
+                    turtle.goto(x, y)
+                    turtle.pendown()
+                    day_count += 1
+            turtle.forward(cell_width)
+           
+        turtle.backward(calendar_size)
+        turtle.right(90)
+        turtle.forward(cell_height)
+        turtle.left(90)
 
     turtle.done()
 
-draw_calendar(8)
+draw_calendar()
