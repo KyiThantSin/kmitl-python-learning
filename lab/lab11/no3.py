@@ -1,3 +1,54 @@
+class Name():
+    def __init__(self, title, firstName, lastName):
+        self.title = title
+        self.firstName = firstName
+        self.lastName = lastName
+        
+    def setName(self, t, f,l):
+        self.title = t
+        self.firstName = f
+        self.lastName = l
+    
+    def getFullName(self):
+        print("Full Name : ", self.title, self.firstName, self.lastName)
+
+class Date():
+    def __init__(self, day, month,year):
+        self.day = day
+        self.month = month
+        self.year = year
+        
+    def setDate(self, d, m, y):
+        self.day = d
+        self.month = m
+        self.year = y
+    
+    def getDate(self):
+        print(self.day + "/" + self.month + "/" + self.year)
+    
+    def getDateBC(self):
+        print(self.day + "/" + self.month + "/" + self.year + 543)
+
+
+class Address():
+    def __init__(self, houseNo, street, district, city, country, postcode):
+        self.houseNo = houseNo
+        self.street = street
+        self.district = district
+        self.city = city
+        self.country = country
+        self.postcode = postcode
+    
+    def setAddress(self,houseNo, street, district, city, country, postcode):
+        self.houseNo = houseNo
+        self.street = street
+        self.district = district
+        self.city = city
+        self.country = country
+        self.postcode = postcode
+    
+    def getAddress(self):
+        print("Full Address: ", self.houseNo, self.street, self.district, self.city, self.country, self.postcode)
 class Department:
     def __init__(self, description):
         self.description = description
